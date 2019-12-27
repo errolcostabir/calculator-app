@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'reusable_card.dart';
 import 'bottombutton.dart';
+
 class ResultsPage extends StatelessWidget {
+  ResultsPage({this.bmiResult, this.resultText});
+  final String bmiResult;
+  final String resultText;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( 
       appBar: AppBar(
         centerTitle: true,
-        title: Text('BMI CALCULATOR'),
-      ),
+        title: Text(' '),
+      ), 
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -17,9 +21,10 @@ class ResultsPage extends StatelessWidget {
           Expanded(
             child: Container(
               padding: EdgeInsets.all(15.0),
-              alignment: Alignment.bottomLeft,
-              child: Text('YOUR RESULT',
-              style: ktitletext,
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                'YOUR RESULT',
+                style: ktitletext,
               ),
             ),
           ),
@@ -30,25 +35,24 @@ class ResultsPage extends StatelessWidget {
               cardchild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text('NORMAL',
-                style: resulttextstyle,
-                ),
-                Text('18.3',
-                style: resultpage,
-                ),
-                Text('your bmi is low!',
-                style: para,
-                textAlign: TextAlign.center,
-                ),
-              ],
+                children: <Widget>[
+                  Text(
+                    resultText,
+                    style: resulttextstyle,
+                  ),
+                  Text(
+                    bmiResult,
+                    style: resultpage,
+                  ),
+                ],
               ),
             ),
           ),
-          BottomButton(buttontitle: 'RE-CALCULATE',
-          ontap: (){
-            Navigator.pop(context);
-          },
+          BottomButton(
+            buttontitle: 'RE-CALCULATE',
+            ontap: () {
+              Navigator.pop(context);
+            },
           )
         ],
       ),

@@ -6,10 +6,6 @@ class Reusable extends StatelessWidget {
   final Widget cardchild;
   final Function onpress;
 
-  //const Reusable({
-  // Key key,
-  //}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

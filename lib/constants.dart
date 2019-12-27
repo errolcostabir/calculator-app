@@ -11,29 +11,29 @@ const knumberTextstyle = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
-const klargetextstyle=TextStyle(
+const klargetextstyle = TextStyle(
   fontSize: 25.0,
   fontWeight: FontWeight.bold,
 );
 
-const ktitletext=TextStyle(
+const ktitletext = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.bold,
 );
 
-const resulttextstyle=TextStyle(
+const resulttextstyle = TextStyle(
   color: Color(0xFF24D876),
   fontSize: 22.0,
   fontWeight: FontWeight.bold,
 );
 
-const resultpage=TextStyle(
+const resultpage = TextStyle(
   color: Colors.white,
   fontSize: 100.0,
   fontWeight: FontWeight.bold,
 );
 
-const para=TextStyle(
+const para = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.normal,
   fontSize: 18.0,

@@ -1,3 +1,4 @@
+import 'package:calculator/barin.dart';
 import 'package:calculator/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,6 +8,8 @@ import 'constants.dart';
 import 'results_page.dart';
 import 'bottombutton.dart';
 import 'roundButton.dart';
+import 'barin.dart';
+
 enum Gender {
   male,
   female,
@@ -22,31 +25,12 @@ class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 60;
   int age = 15;
-  //Color malecardcolr = inactiveColor;
-  // Color femaleacrdcolor = inactiveColor;
 
-  /*  void updateColor(Gender seleG) {
-    if (seleG==Gender.male) {
-      if (malecardcolr == inactiveColor) {
-        malecardcolr = activeCardcolor;
-        femaleacrdcolor=inactiveColor;
-      } else {
-        malecardcolr = inactiveColor;
-      }
-    } else {
-      if (femaleacrdcolor == inactiveColor) {
-        femaleacrdcolor = activeCardcolor;
-        malecardcolr=inactiveColor;
-      } else {
-        femaleacrdcolor = inactiveColor;
-      }
-    }
-  }
- */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text(
             'BMI CALCULATOR',
           ),
@@ -128,10 +112,8 @@ class _InputPageState extends State<InputPage> {
                         value: height.toDouble(),
                         min: 120.0,
                         max: 220.0,
-                        // activeColor: Colors.white,
                         inactiveColor: Color(0xFF8D8E98),
                         onChanged: (double newValue) {
-                          //print(newValue);
                           setState(() {
                             height = newValue.round();
                           });
@@ -181,14 +163,6 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                             ),
-
-                            /* FloatingActionButton(
-                              backgroundColor: Color(0xFF4C4F5E),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ), */
                           ],
                         )
                       ],
@@ -231,14 +205,6 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                             ),
-
-                            /* FloatingActionButton(
-                              backgroundColor: Color(0xFF4C4F5E),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ), */
                           ],
                         )
                       ],
@@ -250,11 +216,17 @@ class _InputPageState extends State<InputPage> {
             BottomButton(
               buttontitle: 'CALCULATE',
               ontap: () {
+                CalculatorBrain cal =
+                    CalculatorBrain(height: height, weight: weight);
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return ResultsPage();
+                      return ResultsPage(
+                        bmiResult: cal.calculateBMI(),
+                        resultText: cal.getresult(),
+                      );
                     },
                   ),
                 );
@@ -264,34 +236,3 @@ class _InputPageState extends State<InputPage> {
         ));
   }
 }
-
-/* class BottomButton extends StatelessWidget {
-  /*  const BottomButton({
-    Key key,
-  }) : super(key: key); */
-
-  BottomButton({this.ontap, this.buttontitle});
-  final Function ontap;
-  final String buttontitle;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        child: Center(
-          child: Text(
-            buttontitle,
-            style: klargetextstyle,
-          ),
-        ),
-        color: Color(0xFF61CA87),
-        // color: Color(0xFFEB1555),
-        margin: EdgeInsets.only(top: 10.0),
-        padding: EdgeInsets.only(bottom: 20.0),
-        width: double.infinity,
-        height: bottomcontainerheight,
-      ),
-    );
-  }
-}
- */
